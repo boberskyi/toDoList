@@ -1,27 +1,35 @@
 import {StyledTaskList, StyledTaskListCheckbox, StyledTaskListItm, StyledTaskListValue} from "./StyledTaskList";
+import {TasksTypePropsType} from "../ToDoList";
+import {FC} from "react";
 
-export const TasksList = () => {
+type TasksListPropsType = {
+  tasks: TasksTypePropsType[]
+}
+
+export const TasksList:FC<TasksListPropsType> = (props) => {
   return (
     <StyledTaskList>
 
       <StyledTaskListItm>
         <StyledTaskListValue>
-          <StyledTaskListCheckbox type="checkbox" checked={true}/>
-          HTML&CSS
+          <StyledTaskListCheckbox
+            type="checkbox"
+            checked={props.tasks[0].isDone}/>
+          {props.tasks[0].title}
         </StyledTaskListValue>
       </StyledTaskListItm>
 
       <StyledTaskListItm>
         <StyledTaskListValue>
-          <StyledTaskListCheckbox type="checkbox" checked={false}/>
-          JS
+          <StyledTaskListCheckbox type="checkbox" checked={props.tasks[1].isDone}/>
+          {props.tasks[1].title}
         </StyledTaskListValue>
       </StyledTaskListItm>
 
       <StyledTaskListItm>
         <StyledTaskListValue>
-          <StyledTaskListCheckbox type="checkbox" checked={true}/>
-          REACT
+          <StyledTaskListCheckbox type="checkbox" checked={props.tasks[2].isDone}/>
+          {props.tasks[2].title}
         </StyledTaskListValue>
       </StyledTaskListItm>
 

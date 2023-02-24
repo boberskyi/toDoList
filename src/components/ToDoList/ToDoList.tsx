@@ -5,7 +5,13 @@ import {StyledHeading, StyledToDoList} from "./StyledToDoList";
 import {FC} from "react";
 
 type ToDoListPropsType = {
-  title: string;
+  title: string
+  tasks: TasksTypePropsType[]
+}
+export type TasksTypePropsType = {
+  id: number
+  title: string
+  isDone: boolean
 }
 
 
@@ -14,7 +20,7 @@ export const ToDoList:FC<ToDoListPropsType> = (props) => {
     <StyledToDoList>
       <StyledHeading>{props.title}</StyledHeading>
       <TaskAddForm/>
-      <TasksList/>
+      <TasksList tasks={props.tasks}/>
       <FilterBtns/>
     </StyledToDoList>
   );

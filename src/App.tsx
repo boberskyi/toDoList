@@ -6,8 +6,8 @@ import {StyledApp} from "./StyledApp";
 function App() {
   return (
     <StyledApp>
-      <ToDoList/>
-      <ToDoList/>
+      <ToDoList title={"ToDoList 1"}/>
+      <ToDoList title={"ToDoList 2"}/>
     </StyledApp>
   );
 }

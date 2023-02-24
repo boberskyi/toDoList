@@ -2,11 +2,17 @@ import {TaskAddForm} from "./TaskAddForm/TaskAddForm";
 import {TasksList} from "./TasksList/TasksList";
 import {FilterBtns} from "./FilterBtns/FilterBtns";
 import {StyledHeading, StyledToDoList} from "./StyledToDoList";
+import {FC} from "react";
 
-export const ToDoList = () => {
+type ToDoListPropsType = {
+  title: string;
+}
+
+
+export const ToDoList:FC<ToDoListPropsType> = (props) => {
   return (
     <StyledToDoList>
-      <StyledHeading>Todolist</StyledHeading>
+      <StyledHeading>{props.title}</StyledHeading>
       <TaskAddForm/>
       <TasksList/>
       <FilterBtns/>

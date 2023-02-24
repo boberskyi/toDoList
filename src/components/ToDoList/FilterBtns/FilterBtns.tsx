@@ -1,6 +1,6 @@
 import {StyledFilterBtn, StyledFilterBtnsWrap} from "./StyledFilterBtns";
 
-export const FilterBtns = () => {
+export const FilterBtns = ():JSX.Element => {
   return (
     <StyledFilterBtnsWrap>
       <StyledFilterBtn>ALL</StyledFilterBtn>

@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
-import {TasksTypePropsType, ToDoList} from "./components/ToDoList/ToDoList";
+import {TasksPropsType, ToDoList} from "./components/ToDoList/ToDoList";
 import {StyledApp} from "./StyledApp";
 
-function App() {
-  const tasks1:Array<TasksTypePropsType> = [
+function App():JSX.Element {
+  const tasks1:Array<TasksPropsType> = [
     {id: 1, title: "HTML", isDone: true},
     {id: 2, title: "CSS", isDone: true},
     {id: 3, title: "JS", isDone: false}
   ];
 
-  const tasks2:Array<TasksTypePropsType> = [
+  const tasks2:Array<TasksPropsType> = [
     {id: 1, title: "React", isDone: true},
     {id: 2, title: "Redux", isDone: true},
     {id: 3, title: "TypeScript", isDone: false}

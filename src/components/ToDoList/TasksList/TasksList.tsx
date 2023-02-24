@@ -1,12 +1,12 @@
 import {StyledTaskList, StyledTaskListCheckbox, StyledTaskListItm, StyledTaskListLabel} from "./StyledTaskList";
-import {TasksTypePropsType} from "../ToDoList";
+import {TasksPropsType} from "../ToDoList";
 import {FC} from "react";
 
 type TasksListPropsType = {
-  tasks: TasksTypePropsType[]
+  tasks: TasksPropsType[]
 }
 
-export const TasksList: FC<TasksListPropsType> = (props) => {
+export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
   return (
     <StyledTaskList>
       {props.tasks.length > 0

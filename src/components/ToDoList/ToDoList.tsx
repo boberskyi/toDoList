@@ -6,16 +6,16 @@ import {FC} from "react";
 
 type ToDoListPropsType = {
   title: string
-  tasks: TasksTypePropsType[]
+  tasks: TasksPropsType[]
 }
-export type TasksTypePropsType = {
+export type TasksPropsType = {
   id: number
   title: string
   isDone: boolean
 }
 
 
-export const ToDoList:FC<ToDoListPropsType> = (props) => {
+export const ToDoList:FC<ToDoListPropsType> = (props):JSX.Element => {
   return (
     <StyledToDoList>
       <StyledHeading>{props.title}</StyledHeading>

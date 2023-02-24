@@ -7,7 +7,7 @@ function App() {
   const tasks1:Array<TasksTypePropsType> = [
     {id: 1, title: "HTML", isDone: true},
     {id: 2, title: "CSS", isDone: true},
-    {id: 3, title: "JS", isDone: false},
+    {id: 3, title: "JS", isDone: false}
   ];
 
   const tasks2:Array<TasksTypePropsType> = [

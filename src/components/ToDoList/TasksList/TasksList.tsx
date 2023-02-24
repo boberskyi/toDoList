@@ -9,7 +9,8 @@ type TasksListPropsType = {
 export const TasksList: FC<TasksListPropsType> = (props) => {
   return (
     <StyledTaskList>
-      {props.tasks.map(task => {
+      {props.tasks.length > 0
+        ? props.tasks.map(task => {
         return (
           <StyledTaskListItm key={task.id}>
             <StyledTaskListLabel>
@@ -21,6 +22,7 @@ export const TasksList: FC<TasksListPropsType> = (props) => {
           </StyledTaskListItm>
         )
       })
+        : <div>There are no tasks</div>
       }
     </StyledTaskList>
   )

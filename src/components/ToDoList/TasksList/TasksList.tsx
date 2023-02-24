@@ -6,21 +6,21 @@ export const TasksList = () => {
 
       <StyledTaskListItm>
         <StyledTaskListValue>
-          <StyledTaskListCheckbox type="checkbox"/>
+          <StyledTaskListCheckbox type="checkbox" checked={true}/>
           HTML&CSS
         </StyledTaskListValue>
       </StyledTaskListItm>
 
       <StyledTaskListItm>
         <StyledTaskListValue>
-          <StyledTaskListCheckbox type="checkbox"/>
+          <StyledTaskListCheckbox type="checkbox" checked={false}/>
           JS
         </StyledTaskListValue>
       </StyledTaskListItm>
 
       <StyledTaskListItm>
         <StyledTaskListValue>
-          <StyledTaskListCheckbox type="checkbox"/>
+          <StyledTaskListCheckbox type="checkbox" checked={true}/>
           REACT
         </StyledTaskListValue>
       </StyledTaskListItm>

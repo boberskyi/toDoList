@@ -7,6 +7,7 @@ function App() {
   return (
     <StyledApp>
       <ToDoList/>
+      <ToDoList/>
     </StyledApp>
   );
 }

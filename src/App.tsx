@@ -16,11 +16,14 @@ function App() {
     {id: 3, title: "TypeScript", isDone: false}
   ];
 
+  const title1:string = 'Sunday';
+  const title2:string = 'Monday';
+
 
   return (
     <StyledApp>
-      <ToDoList title={"Sunday"} tasks={tasks1}/>
-      <ToDoList title={"Monday"} tasks={tasks2}/>
+      <ToDoList title={title1} tasks={tasks1}/>
+      <ToDoList title={title2} tasks={tasks2}/>
     </StyledApp>
   );
 }

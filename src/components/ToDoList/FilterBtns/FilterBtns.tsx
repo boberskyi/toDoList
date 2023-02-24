@@ -1,9 +1,12 @@
+import {StyledFilterBtn, StyledFilterBtnsWrap} from "./StyledFilterBtns";
+
 export const FilterBtns = () => {
   return (
-    <div>
-      <button>ALL</button>
-      <button>Active</button>
-      <button>Completed</button>
-    </div>
+    <StyledFilterBtnsWrap>
+      <StyledFilterBtn>ALL</StyledFilterBtn>
+      <StyledFilterBtn>Active</StyledFilterBtn>
+      <StyledFilterBtn>Completed</StyledFilterBtn>
+    </StyledFilterBtnsWrap>
   );
 }
+

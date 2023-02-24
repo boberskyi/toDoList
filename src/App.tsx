@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import {ToDoList} from "./components/ToDoList";
-import styled from "styled-components";
+import {ToDoList} from "./components/ToDoList/ToDoList";
+import {StyledApp} from "./StyledApp";
 
 function App() {
   return (
@@ -11,9 +11,6 @@ function App() {
   );
 }
 
-const StyledApp = styled.main`
-  display: flex;
-  padding: 30px;
-`
+
 
 export default App;

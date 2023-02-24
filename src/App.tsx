@@ -13,7 +13,7 @@ function App() {
   const tasks2 = [
     {id: 1, title: "React", isDone: true},
     {id: 2, title: "Redux", isDone: true},
-    {id: 3, title: "TypeScript", isDone: false},
+    {id: 3, title: "TypeScript", isDone: false}
   ];
 
 

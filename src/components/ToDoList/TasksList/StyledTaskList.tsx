@@ -11,6 +11,6 @@ export const StyledTaskListItm = styled.li`
 export const StyledTaskListCheckbox = styled.input`
   margin-right: 10px;
 `
-export const StyledTaskListValue = styled.label`
+export const StyledTaskListLabel = styled.label`
   cursor: pointer;
 `

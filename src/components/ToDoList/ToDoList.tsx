@@ -7,6 +7,7 @@ import {FC} from "react";
 type ToDoListPropsType = {
   title: string
   tasks: TasksPropsType[]
+  filterTasks: (filter: string) => void
 }
 export type TasksPropsType = {
   id: number
@@ -21,7 +22,7 @@ export const ToDoList:FC<ToDoListPropsType> = (props):JSX.Element => {
       <StyledHeading>{props.title}</StyledHeading>
       <TaskAddForm/>
       <TasksList tasks={props.tasks}/>
-      <FilterBtns/>
+      <FilterBtns filterTasks={props.filterTasks}/>
     </StyledToDoList>
   );
 };

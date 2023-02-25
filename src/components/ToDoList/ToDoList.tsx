@@ -1,16 +1,17 @@
 import {TaskAddForm} from "./TaskAddForm/TaskAddForm";
 import {TasksList} from "./TasksList/TasksList";
-import {FilterBtns} from "./FilterBtns/FilterBtns";
+import {FilterBtns, FilterValuePropsType} from "./FilterBtns/FilterBtns";
 import {StyledHeading, StyledToDoList} from "./StyledToDoList";
 import {FC} from "react";
 
 type ToDoListPropsType = {
   title: string
   tasks: TasksPropsType[]
-  filterTasks: (filter: string) => void
+  filterTasks: (filter: FilterValuePropsType) => void
+  removeTasks: (id: string) => void
 }
 export type TasksPropsType = {
-  id: number
+  id: string
   title: string
   isDone: boolean
 }
@@ -21,7 +22,10 @@ export const ToDoList:FC<ToDoListPropsType> = (props):JSX.Element => {
     <StyledToDoList>
       <StyledHeading>{props.title}</StyledHeading>
       <TaskAddForm/>
-      <TasksList tasks={props.tasks}/>
+      <TasksList
+        tasks={props.tasks}
+        removeTasks={props.removeTasks}
+      />
       <FilterBtns filterTasks={props.filterTasks}/>
     </StyledToDoList>
   );

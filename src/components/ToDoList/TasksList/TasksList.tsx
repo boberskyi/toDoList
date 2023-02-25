@@ -1,9 +1,16 @@
-import {StyledTaskList, StyledTaskListCheckbox, StyledTaskListItm, StyledTaskListLabel} from "./StyledTaskList";
+import {
+  StyledBtnRemove,
+  StyledTaskList,
+  StyledTaskListCheckbox,
+  StyledTaskListItm,
+  StyledTaskListLabel
+} from "./StyledTaskList";
 import {TasksPropsType} from "../ToDoList";
 import {FC} from "react";
 
 type TasksListPropsType = {
   tasks: TasksPropsType[]
+  removeTasks: (id: string) => void
 }
 
 export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
@@ -13,6 +20,10 @@ export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
         ? props.tasks.map(task => {
         return (
           <StyledTaskListItm key={task.id}>
+            <StyledBtnRemove
+              onClick={() => props.removeTasks(task.id)}>
+              X
+            </StyledBtnRemove>
             <StyledTaskListLabel>
               <StyledTaskListCheckbox
                 type="checkbox"

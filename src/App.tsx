@@ -1,40 +1,51 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {TasksPropsType, ToDoList} from "./components/ToDoList/ToDoList";
 import {StyledApp} from "./StyledApp";
+import {v1} from "uuid";
+import {FilterValuePropsType} from "./components/ToDoList/FilterBtns/FilterBtns";
 
 function App(): JSX.Element {
   const title: string = 'Sunday';
   const tasksArray: Array<TasksPropsType> = [
-    {id: 1, title: "HTML", isDone: true},
-    {id: 2, title: "CSS", isDone: true},
-    {id: 3, title: "JS", isDone: false}
+    {id: v1(), title: "HTML", isDone: true},
+    {id: v1(), title: "CSS", isDone: true},
+    {id: v1(), title: "JS", isDone: false}
   ];
 
-  const [tasks, setTasks] = React.useState<Array<TasksPropsType>>(tasksArray);
-
-  const filterTasks = (filter: string): void => {
-    setTasks(tasksArray.filter(task => {
-      switch (filter) {
-        case 'Active':
-          return task.isDone === false;
-          break;
-        case 'Completed':
-          return task.isDone === true;
-          break;
-        default:
-          return task;
-      }
-    }));
-
+  const removeTasks = (id: string): void => {
+    setTasks(tasks.filter(task => task.id !== id));
   }
+
+
+  const [tasks, setTasks] = useState<Array<TasksPropsType>>(tasksArray);
+  const [filter, setFilter] = useState<FilterValuePropsType>('All');
+
+  const filteredTasks = tasks.filter(task => {
+    switch (filter) {
+      case 'Active':
+        return task.isDone === false;
+        break;
+      case 'Completed':
+        return task.isDone === true;
+        break;
+      default:
+        return task;
+    }
+  });
+
+  const filterTasks = (filter: FilterValuePropsType): void => {
+    setFilter(filter);
+  }
+
 
   return (
     <StyledApp>
       <ToDoList
         title={title}
-        tasks={tasks}
+        tasks={filteredTasks}
         filterTasks={filterTasks}
+        removeTasks={removeTasks}
       />
     </StyledApp>
   );

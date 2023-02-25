@@ -11,4 +11,8 @@ export const StyledFilterBtn = styled.div`
   background: #fff;
   border: 2px solid rgba(0,0,0,0.2);
   cursor: pointer;
+  &:hover {
+    background-color: #0275ff;
+    color: #fff;
+  }
 `

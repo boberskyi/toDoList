@@ -24,7 +24,7 @@ export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
               onClick={() => props.removeTasks(task.id)}>
               X
             </StyledBtnRemove>
-            <StyledTaskListLabel>
+            <StyledTaskListLabel opacity={task.isDone}>
               <StyledTaskListCheckbox
                 type="checkbox"
                 checked={task.isDone}/>

@@ -27,8 +27,12 @@ export const StyledBtnRemove = styled.button`
 export const StyledTaskListCheckbox = styled.input`
   margin-right: 10px;
 `
-export const StyledTaskListLabel = styled.label`
+interface StyledTaskListLabelPropsType {
+  opacity: boolean
+}
+export const StyledTaskListLabel = styled.label<StyledTaskListLabelPropsType>`
   cursor: pointer;
+  opacity: ${props => props.opacity ? '0.5' : '1'};
 `
 
 interface StyledTextPropsType {

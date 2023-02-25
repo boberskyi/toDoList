@@ -17,7 +17,8 @@ export const StyledBtnRemove = styled.button`
   cursor: pointer;
   border-radius: 3px;
   transition: all 0.3s ease;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+
   &:hover {
     background-color: #0275ff;
     color: #fff;
@@ -28,4 +29,12 @@ export const StyledTaskListCheckbox = styled.input`
 `
 export const StyledTaskListLabel = styled.label`
   cursor: pointer;
+`
+
+interface StyledTextPropsType {
+  completed: boolean
+}
+
+export const StyledText = styled.span<StyledTextPropsType>`
+  text-decoration: ${props => props.completed ? 'line-through' : 'none'};
 `

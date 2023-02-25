@@ -3,7 +3,7 @@ import {
   StyledTaskList,
   StyledTaskListCheckbox,
   StyledTaskListItm,
-  StyledTaskListLabel
+  StyledTaskListLabel, StyledText
 } from "./StyledTaskList";
 import {TasksPropsType} from "../ToDoList";
 import {FC} from "react";
@@ -28,7 +28,9 @@ export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
               <StyledTaskListCheckbox
                 type="checkbox"
                 checked={task.isDone}/>
-              {task.title}
+              <StyledText completed={task.isDone}>
+                {task.title}
+              </StyledText>
             </StyledTaskListLabel>
           </StyledTaskListItm>
         )

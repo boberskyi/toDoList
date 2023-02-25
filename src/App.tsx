@@ -13,13 +13,23 @@ function App(): JSX.Element {
     {id: v1(), title: "JS", isDone: false}
   ];
 
+  const [tasks, setTasks] = useState<Array<TasksPropsType>>(tasksArray);
+  const [filter, setFilter] = useState<FilterValuePropsType>('All');
+
+
   const removeTasks = (id: string): void => {
     setTasks(tasks.filter(task => task.id !== id));
   }
 
+  const addTask = (title: string): void => {
+    const newTask: TasksPropsType = {
+      id: v1(),
+      title: title,
+      isDone: false
+    }
+    setTasks([newTask, ...tasks]);
+  }
 
-  const [tasks, setTasks] = useState<Array<TasksPropsType>>(tasksArray);
-  const [filter, setFilter] = useState<FilterValuePropsType>('All');
 
   const filteredTasks = tasks.filter(task => {
     switch (filter) {
@@ -46,6 +56,7 @@ function App(): JSX.Element {
         tasks={filteredTasks}
         filterTasks={filterTasks}
         removeTasks={removeTasks}
+        addTask={addTask}
       />
     </StyledApp>
   );

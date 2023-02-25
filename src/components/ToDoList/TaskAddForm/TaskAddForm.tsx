@@ -12,11 +12,12 @@ export const TaskAddForm:FC<TaskAddFormPropsType> = (props):JSX.Element => {
   }
   const onClickHandler = () => {
     props.addTask(title)
+    setTitle('');
   }
 
   return (
     <StyledTaskAddFormWrap>
-      <StyledInputTask onChange={onChangeHandler} type="text"/>
+      <StyledInputTask onChange={onChangeHandler} value={title} type="text"/>
       <StyledBtnAdd onClick={onClickHandler}>+</StyledBtnAdd>
     </StyledTaskAddFormWrap>
   );

@@ -25,11 +25,7 @@ function App(): JSX.Element {
   }
 
   const addTask = (title: string): void => {
-    const newTask: TasksPropsType = {
-      id: v1(),
-      title: title,
-      isDone: false
-    }
+    const newTask: TasksPropsType = {id: v1(), title: title, isDone: false}
     setTasks([newTask, ...tasks]);
   }
 

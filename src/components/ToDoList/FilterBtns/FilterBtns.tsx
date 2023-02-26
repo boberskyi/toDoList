@@ -4,6 +4,7 @@ import {FC} from "react";
 export type FilterValuePropsType = 'All' | 'Active' | 'Completed';
 type FilterBtnsPropsType = {
   filterTasks: (filter: FilterValuePropsType) => void
+  filter: FilterValuePropsType
 }
 
 export const FilterBtns:FC<FilterBtnsPropsType> = (props):JSX.Element => {
@@ -11,9 +12,9 @@ export const FilterBtns:FC<FilterBtnsPropsType> = (props):JSX.Element => {
 
   return (
     <StyledFilterBtnsWrap>
-      <StyledFilterBtn onClick={() => FilterBtnHandler('All')}>ALL</StyledFilterBtn>
-      <StyledFilterBtn onClick={() => FilterBtnHandler('Active')}>Active</StyledFilterBtn>
-      <StyledFilterBtn onClick={() => FilterBtnHandler('Completed')}>Completed</StyledFilterBtn>
+      <StyledFilterBtn active={props.filter === 'All'} onClick={() => FilterBtnHandler('All')}>All</StyledFilterBtn>
+      <StyledFilterBtn active={props.filter === 'Active'} onClick={() => FilterBtnHandler('Active')}>Active</StyledFilterBtn>
+      <StyledFilterBtn active={props.filter === 'Completed'} onClick={() => FilterBtnHandler('Completed')}>Completed</StyledFilterBtn>
     </StyledFilterBtnsWrap>
   );
 }

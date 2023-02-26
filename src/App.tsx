@@ -53,6 +53,7 @@ function App(): JSX.Element {
       <ToDoList
         title={title}
         tasks={filteredTasks}
+        filter={filter}
         filterTasks={filterTasks}
         removeTasks={removeTasks}
         addTask={addTask}

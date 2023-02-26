@@ -24,6 +24,7 @@ export const StyledBtnRemove = styled.button`
     color: #fff;
   }
 `
+
 export const StyledTaskListCheckbox = styled.input`
   margin-right: 10px;
 `

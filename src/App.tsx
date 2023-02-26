@@ -16,6 +16,14 @@ function App(): JSX.Element {
   const [tasks, setTasks] = useState<Array<TasksPropsType>>(tasksArray);
   const [filter, setFilter] = useState<FilterValuePropsType>('All');
 
+  const changeTask = (taskId:string, newIsDone: boolean): void => {
+    setTasks(tasks.map(task => {
+      if (task.id === taskId) {
+        return {...task, isDone: newIsDone}
+      }
+      return task;
+    }))
+  }
 
   const removeTasks = (id: string): void => {
     setTasks(tasks.filter(task => task.id !== id));
@@ -57,6 +65,7 @@ function App(): JSX.Element {
         filterTasks={filterTasks}
         removeTasks={removeTasks}
         addTask={addTask}
+        changeTask={changeTask}
       />
     </StyledApp>
   );

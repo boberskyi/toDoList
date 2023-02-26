@@ -6,18 +6,23 @@ import {
   StyledTaskListLabel, StyledText
 } from "./StyledTaskList";
 import {TasksPropsType} from "../ToDoList";
-import {FC} from "react";
+import {ChangeEvent, FC} from "react";
 
 type TasksListPropsType = {
   tasks: TasksPropsType[]
   removeTasks: (id: string) => void
+  changeTask: (taskId:string, newIsDone: boolean) => void
 }
 
 export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
+
   return (
     <StyledTaskList>
       {props.tasks.length > 0
         ? props.tasks.map(task => {
+          const CheckboxOnClickHandler = (e:ChangeEvent<HTMLInputElement>) => {
+            props.changeTask(task.id, e.currentTarget.checked);
+          }
         return (
           <StyledTaskListItm key={task.id}>
             <StyledBtnRemove
@@ -27,7 +32,9 @@ export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
             <StyledTaskListLabel opacity={task.isDone}>
               <StyledTaskListCheckbox
                 type="checkbox"
-                checked={task.isDone}/>
+                checked={task.isDone}
+                onChange={CheckboxOnClickHandler}
+              />
               <StyledText completed={task.isDone}>
                 {task.title}
               </StyledText>

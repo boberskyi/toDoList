@@ -7,6 +7,12 @@ import {FilterValuePropsType} from "./components/ToDoList/FilterBtns/FilterBtns"
 
 function App(): JSX.Element {
   const title: string = 'Sunday';
+
+  const todoLists = [
+    {id: v1(), title: 'What to learn', filter: 'Active'},
+    {id: v1(), title: 'What to buy', filter: 'Completed'}
+  ];
+
   const tasksArray: Array<TasksPropsType> = [
     {id: v1(), title: "HTML", isDone: true},
     {id: v1(), title: "CSS", isDone: true},
@@ -16,7 +22,7 @@ function App(): JSX.Element {
   const [tasks, setTasks] = useState<Array<TasksPropsType>>(tasksArray);
   const [filter, setFilter] = useState<FilterValuePropsType>('All');
 
-  const changeTask = (taskId:string, newIsDone: boolean): void => {
+  const changeTask = (taskId: string, newIsDone: boolean): void => {
     setTasks(tasks.map(task => (task.id === taskId) ? {...task, isDone: newIsDone} : task))
   }
 
@@ -33,10 +39,10 @@ function App(): JSX.Element {
   const filteredTasks = tasks.filter(task => {
     switch (filter) {
       case 'Active':
-        return task.isDone === false;
+        return !task.isDone;
         break;
       case 'Completed':
-        return task.isDone === true;
+        return task.isDone;
         break;
       default:
         return task;
@@ -50,6 +56,15 @@ function App(): JSX.Element {
 
   return (
     <StyledApp>
+      <ToDoList
+        title={title}
+        tasks={filteredTasks}
+        filter={filter}
+        filterTasks={filterTasks}
+        removeTasks={removeTasks}
+        addTask={addTask}
+        changeTask={changeTask}
+      />
       <ToDoList
         title={title}
         tasks={filteredTasks}

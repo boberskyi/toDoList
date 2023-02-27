@@ -5,10 +5,17 @@ import {StyledApp} from "./StyledApp";
 import {v1} from "uuid";
 import {FilterValuePropsType} from "./components/ToDoList/FilterBtns/FilterBtns";
 
+
+type TodoListType = {
+  id: string
+  filter: FilterValuePropsType
+  title: string
+}
+
 function App(): JSX.Element {
   const title: string = 'Sunday';
 
-  const todoLists = [
+  const todoLists:TodoListType[] = [
     {id: v1(), title: 'What to learn', filter: 'Active'},
     {id: v1(), title: 'What to buy', filter: 'Completed'}
   ];
@@ -36,18 +43,7 @@ function App(): JSX.Element {
   }
 
 
-  const filteredTasks = tasks.filter(task => {
-    switch (filter) {
-      case 'Active':
-        return !task.isDone;
-        break;
-      case 'Completed':
-        return task.isDone;
-        break;
-      default:
-        return task;
-    }
-  });
+
 
   const filterTasks = (filter: FilterValuePropsType): void => {
     setFilter(filter);
@@ -56,24 +52,33 @@ function App(): JSX.Element {
 
   return (
     <StyledApp>
-      <ToDoList
-        title={title}
-        tasks={filteredTasks}
-        filter={filter}
-        filterTasks={filterTasks}
-        removeTasks={removeTasks}
-        addTask={addTask}
-        changeTask={changeTask}
-      />
-      <ToDoList
-        title={title}
-        tasks={filteredTasks}
-        filter={filter}
-        filterTasks={filterTasks}
-        removeTasks={removeTasks}
-        addTask={addTask}
-        changeTask={changeTask}
-      />
+      {todoLists.map(todoList => {
+        const filteredTasks = tasks.filter(task => {
+          switch (todoList.filter) {
+            case 'Active':
+              return !task.isDone;
+              break;
+            case 'Completed':
+              return task.isDone;
+              break;
+            default:
+              return task;
+          }
+        });
+
+        return (
+          <ToDoList
+            title={todoList.title}
+            tasks={filteredTasks}
+            filter={todoList.filter}
+            filterTasks={filterTasks}
+            removeTasks={removeTasks}
+            addTask={addTask}
+            changeTask={changeTask}
+          />
+        )
+      })
+      }
     </StyledApp>
   );
 }

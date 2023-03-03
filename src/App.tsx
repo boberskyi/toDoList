@@ -62,7 +62,7 @@ function App(): JSX.Element {
         return (
           <ToDoList
             key={tl.id}
-            id={tl.id}
+            todoListid={tl.id}
             title={tl.title}
             tasks={filteredTasks}
             filter={tl.filter}

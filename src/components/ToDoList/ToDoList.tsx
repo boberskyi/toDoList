@@ -6,8 +6,9 @@ import {FC} from "react";
 
 type ToDoListPropsType = {
   title: string
+  id: string
   tasks: TasksPropsType[]
-  filterTasks: (filter: FilterValuePropsType) => void
+  filterTasks: (tasklistId:string, filter: FilterValuePropsType) => void
   removeTasks: (id: string) => void
   addTask: (title: string) => void
   changeTask: (taskId:string, newIsDone: boolean) => void
@@ -30,7 +31,11 @@ export const ToDoList:FC<ToDoListPropsType> = (props):JSX.Element => {
         removeTasks={props.removeTasks}
         changeTask={props.changeTask}
       />
-      <FilterBtns filter={props.filter} filterTasks={props.filterTasks}/>
+      <FilterBtns
+        id={props.id}
+        filter={props.filter}
+        filterTasks={props.filterTasks}
+      />
     </StyledToDoList>
   );
 };

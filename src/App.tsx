@@ -5,7 +5,14 @@ import {StyledApp} from "./StyledApp";
 import {v1} from "uuid";
 import {FilterValuePropsType} from "./components/ToDoList/FilterBtns/FilterBtns";
 
+type ToDoListsType = {
+  id: string
+  title: string
+  filter: FilterValuePropsType
+}
+
 function App(): JSX.Element {
+
   const title: string = 'Sunday';
   const tasksArray: Array<TasksPropsType> = [
     {id: v1(), title: "HTML", isDone: true},
@@ -14,7 +21,12 @@ function App(): JSX.Element {
   ];
 
   const [tasks, setTasks] = useState<Array<TasksPropsType>>(tasksArray);
-  const [filter, setFilter] = useState<FilterValuePropsType>('All');
+
+  let [todolists, setTodolists] = useState<Array<ToDoListsType>>([
+    {id: v1(), title: 'Sunday', filter: 'Active'},
+    {id: v1(), title: 'Monday', filter: 'All'},
+  ])
+
 
   const changeTask = (taskId:string, newIsDone: boolean): void => {
     setTasks(tasks.map(task => (task.id === taskId) ? {...task, isDone: newIsDone} : task))
@@ -30,44 +42,38 @@ function App(): JSX.Element {
   }
 
 
-  const filteredTasks = tasks.filter(task => {
-    switch (filter) {
-      case 'Active':
-        return !task.isDone;
-        break;
-      case 'Completed':
-        return task.isDone;
-        break;
-      default:
-        return task;
-    }
-  });
 
-  const filterTasks = (filter: FilterValuePropsType): void => {
-    setFilter(filter);
+
+  const filterTasks = (tasklistId:string, filter: FilterValuePropsType): void => {
+    setTodolists(todolists.map(tl => tl.id === tasklistId ? {...tl, filter: filter}: tl));
   }
 
 
   return (
     <StyledApp>
-      <ToDoList
-        title={title}
-        tasks={filteredTasks}
-        filter={filter}
-        filterTasks={filterTasks}
-        removeTasks={removeTasks}
-        addTask={addTask}
-        changeTask={changeTask}
-      />
-      <ToDoList
-        title={title}
-        tasks={filteredTasks}
-        filter={filter}
-        filterTasks={filterTasks}
-        removeTasks={removeTasks}
-        addTask={addTask}
-        changeTask={changeTask}
-      />
+      {todolists.map(tl => {
+        const filteredTasks = tasks.filter(task => {
+          if(tl.filter === 'Active') return !task.isDone;
+          if(tl.filter === 'Completed') return task.isDone;
+          else return task;
+          })
+
+
+        return (
+          <ToDoList
+            key={tl.id}
+            id={tl.id}
+            title={tl.title}
+            tasks={filteredTasks}
+            filter={tl.filter}
+            filterTasks={filterTasks}
+            removeTasks={removeTasks}
+            addTask={addTask}
+            changeTask={changeTask}
+          />
+        )
+      })}
+
     </StyledApp>
   );
 }

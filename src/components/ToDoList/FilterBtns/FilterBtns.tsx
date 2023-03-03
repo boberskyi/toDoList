@@ -3,12 +3,15 @@ import {FC} from "react";
 
 export type FilterValuePropsType = 'All' | 'Active' | 'Completed';
 type FilterBtnsPropsType = {
-  filterTasks: (filter: FilterValuePropsType) => void
+  id: string
+  filterTasks: (ftasklistId:string, ilter: FilterValuePropsType) => void
   filter: FilterValuePropsType
 }
 
 export const FilterBtns:FC<FilterBtnsPropsType> = (props):JSX.Element => {
-  const FilterBtnHandler = (filter: FilterValuePropsType): void => props.filterTasks(filter);
+  const FilterBtnHandler = (filter: FilterValuePropsType): void => {
+    props.filterTasks(props.id, filter);
+  }
 
   return (
     <StyledFilterBtnsWrap>

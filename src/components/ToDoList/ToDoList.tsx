@@ -10,6 +10,7 @@ type ToDoListPropsType = {
   tasks: Array<TasksPropsType>
   filterTasks: (tasklistId:string, filter: FilterValuePropsType) => void
   removeTasks: (tasklistId:string, id: string) => void
+  removeTodolist: (id: string) => void
   addTask: (tasklistId:string, title: string) => void
   changeTask: (tasklistId:string, taskId:string, newIsDone: boolean) => void
   filter: FilterValuePropsType
@@ -22,8 +23,13 @@ export type TasksPropsType = {
 
 
 export const ToDoList:FC<ToDoListPropsType> = (props):JSX.Element => {
+  const removeTodolistHandler = () => {
+    props.removeTodolist(props.todoListid);
+  }
+
   return (
     <StyledToDoList>
+      <button onClick={removeTodolistHandler}>X</button>
       <StyledHeading>{props.title}</StyledHeading>
       <TaskAddForm
         addTask={props.addTask}

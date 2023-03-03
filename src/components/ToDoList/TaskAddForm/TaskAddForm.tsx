@@ -2,7 +2,8 @@ import {StyledBtnAdd, StyledErrorMsg, StyledInputTask, StyledTaskAddFormWrap} fr
 import {FC, useState} from "react";
 
 type TaskAddFormPropsType = {
-  addTask: (title: string) => void
+  addTask: (tasklistId:string, title: string) => void
+  todoListid: string
 }
 
 export const TaskAddForm:FC<TaskAddFormPropsType> = (props):JSX.Element => {
@@ -16,14 +17,14 @@ export const TaskAddForm:FC<TaskAddFormPropsType> = (props):JSX.Element => {
 
   const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      (title.trim() !== '') ? props.addTask(title.trim()) : setError('Title is required!');
+      (title.trim() !== '') ? props.addTask(props.todoListid, title.trim()) : setError('Title is required!');
 
       setTitle('');
     }
   }
 
   const onClickHandler = () => {
-    (title.trim() !== '') ? props.addTask(title.trim()) : setError('Title is required!');
+    (title.trim() !== '') ? props.addTask(props.todoListid, title.trim()) : setError('Title is required!');
     setTitle('');
   }
 

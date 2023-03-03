@@ -45,9 +45,10 @@ function App(): JSX.Element {
     // setTasks(tasks.filter(task => task.id !== id));
   }
 
-  const addTask = (title: string): void => {
-    // const newTask: TasksPropsType = {id: v1(), title: title, isDone: false}
+  const addTask = (tasklistId:string, title: string): void => {
+    const newTask: TasksPropsType = {id: v1(), title: title, isDone: false}
     // setTasks([newTask, ...tasks]);
+    setTasks({...tasks, [tasklistId]: [newTask, ...tasks[tasklistId]]});
   }
 
   const filterTasks = (tasklistId:string, filter: FilterValuePropsType): void => {

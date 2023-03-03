@@ -59,6 +59,15 @@ function App(): JSX.Element {
         addTask={addTask}
         changeTask={changeTask}
       />
+      <ToDoList
+        title={title}
+        tasks={filteredTasks}
+        filter={filter}
+        filterTasks={filterTasks}
+        removeTasks={removeTasks}
+        addTask={addTask}
+        changeTask={changeTask}
+      />
     </StyledApp>
   );
 }

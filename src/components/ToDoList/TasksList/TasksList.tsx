@@ -11,7 +11,7 @@ import {ChangeEvent, FC} from "react";
 type TasksListPropsType = {
   tasks: TasksPropsType[]
   removeTasks: (tasklistId:string, id: string) => void
-  changeTask: (taskId:string, newIsDone: boolean) => void
+  changeTask: (tasklistId:string, taskId:string, newIsDone: boolean) => void
   todoListid: string
 }
 
@@ -22,7 +22,7 @@ export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
       {props.tasks.length > 0
         ? props.tasks.map(task => {
           const CheckboxOnClickHandler = (e:ChangeEvent<HTMLInputElement>) => {
-            props.changeTask(task.id, e.currentTarget.checked);
+            props.changeTask(props.todoListid, task.id, e.currentTarget.checked);
           }
         return (
           <StyledTaskListItm key={task.id}>

@@ -11,7 +11,7 @@ type ToDoListPropsType = {
   filterTasks: (tasklistId:string, filter: FilterValuePropsType) => void
   removeTasks: (tasklistId:string, id: string) => void
   addTask: (tasklistId:string, title: string) => void
-  changeTask: (taskId:string, newIsDone: boolean) => void
+  changeTask: (tasklistId:string, taskId:string, newIsDone: boolean) => void
   filter: FilterValuePropsType
 }
 export type TasksPropsType = {

@@ -37,8 +37,9 @@ function App(): JSX.Element {
     ]
   })
 
-  const changeTask = (taskId:string, newIsDone: boolean): void => {
+  const changeTask = (tasklistId:string, taskId:string, newIsDone: boolean): void => {
     //setTasks(tasks.map(task => (task.id === taskId) ? {...task, isDone: newIsDone} : task))
+    setTasks({...tasks, [tasklistId]: tasks[tasklistId].map(t => t.id === taskId ? {...t, isDone: newIsDone} : t)})
   }
 
   const removeTasks = (tasklistId:string, id: string): void => {

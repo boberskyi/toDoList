@@ -41,13 +41,12 @@ function App(): JSX.Element {
     //setTasks(tasks.map(task => (task.id === taskId) ? {...task, isDone: newIsDone} : task))
   }
 
-  const removeTasks = (id: string): void => {
-    // setTasks(tasks.filter(task => task.id !== id));
+  const removeTasks = (tasklistId:string, id: string): void => {
+    setTasks({...tasks, [tasklistId]: tasks[tasklistId].filter(t => t.id !== id)})
   }
 
   const addTask = (tasklistId:string, title: string): void => {
     const newTask: TasksPropsType = {id: v1(), title: title, isDone: false}
-    // setTasks([newTask, ...tasks]);
     setTasks({...tasks, [tasklistId]: [newTask, ...tasks[tasklistId]]});
   }
 

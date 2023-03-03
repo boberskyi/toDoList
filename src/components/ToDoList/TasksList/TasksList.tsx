@@ -10,8 +10,9 @@ import {ChangeEvent, FC} from "react";
 
 type TasksListPropsType = {
   tasks: TasksPropsType[]
-  removeTasks: (id: string) => void
+  removeTasks: (tasklistId:string, id: string) => void
   changeTask: (taskId:string, newIsDone: boolean) => void
+  todoListid: string
 }
 
 export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
@@ -26,7 +27,7 @@ export const TasksList: FC<TasksListPropsType> = (props):JSX.Element => {
         return (
           <StyledTaskListItm key={task.id}>
             <StyledBtnRemove
-              onClick={() => props.removeTasks(task.id)}>
+              onClick={() => props.removeTasks(props.todoListid, task.id)}>
               X
             </StyledBtnRemove>
             <StyledTaskListLabel opacity={task.isDone}>
